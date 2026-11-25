@@ -477,3 +477,27 @@ select
 from customers as c1
 join customers as c2
 on c1.referred_by_customer_id = c2.customer_id;
+
+
+
+
+select * from customers;
+
+-- find out the customers who are at the 2nd highest age 
+-- ranking func,
+
+-- limit, rank!
+
+select * from customers
+order by age desc
+limit 2;
+
+select 	
+	*
+from (
+select
+	*,
+    dense_rank() over(order by age desc) as age_rnk
+from customers ) as e
+where age_rnk = 6;
+
